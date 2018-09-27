@@ -1,15 +1,18 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Activity;
+import com.sun.tools.jdeprscan.scan.Scan;
 import org.springframework.stereotype.Repository;
+
+import java.util.Scanner;
 
 @Repository
 public class ActivityDbRepository implements ActivityInterface{
 
     @Override
     public Activity OpretAktivitet(Activity activity) {
-        return activity;
 
+        return activity;
     }
 
     @Override
