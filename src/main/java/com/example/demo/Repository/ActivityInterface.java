@@ -4,7 +4,7 @@ import com.example.demo.Model.Activity;
 
 public interface ActivityInterface {
 
-    Activity OpretAktivitet(Activity activity);
+    boolean OpretAktivitet(Activity activity);
 
     void RedigerAktivitet(Activity activity);
 
