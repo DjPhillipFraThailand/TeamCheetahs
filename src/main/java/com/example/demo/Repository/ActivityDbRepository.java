@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 public class ActivityDbRepository implements ActivityInterface{
 
     @Override
-    public boolean OpretAktivitet(Activity activity) {
+    public Activity OpretAktivitet(Activity activity) {
         return activity;
 
     }
