@@ -7,11 +7,12 @@ public class DatabaseController {
     private static Statement statement;
     private static ResultSet resultSet;
 
-    private static String DriverName = "com.mysql.jdbc.Driver";
-    private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs";
-    private static String DBuser = "root";
-    private static String DBpassword = "fedefrede1";
-    public static String DBprefix = "Protocol_";
+    private static String DriverName = "com.mysql.cj.jdbc.Driver";
+    private static String DBdatabase = "sorom_dk_db2";
+    private static String DBuser = "sorom_dk";
+    private static String DBpassword = "09D30DBD26415BE6E9559863D9D";
+    private static String DBurl = "jdbc:mysql://mysql29.unoeuro.com/"+DBdatabase+"?user="+DBuser+"&password="+DBpassword+"&useSSL=false&serverTimezone=UTC";
+    public static String DBprefix = "AdventureXP_";
 
     // Database configuration start
     public DatabaseController() {
