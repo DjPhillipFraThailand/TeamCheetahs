@@ -2,25 +2,35 @@ package com.example.demo.Control;
 
 import java.sql.*;
 
+@SuppressWarnings("deprecation")
 public class DatabaseController {
     private static Connection DBconnect;
     private static Statement statement;
     private static ResultSet resultSet;
-
-    private static String DriverName = "com.mysql.jdbc.Driver";
-    private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs";
+    private static String DriverName = "com.mysql.cj.jdbc.Driver";
+    private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false";
     private static String DBuser = "root";
     private static String DBpassword = "fedefrede1";
     public static String DBprefix = "Protocol_";
-
+    private Connection connect = null;
+//com.mysql.jdbc.Driver
+    //com.mysql.cj.jdbc.Driver
+//jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false
+    //jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?
     // Database configuration start
     public DatabaseController() {
         try {
             Class.forName(DriverName).newInstance();
 
+            //DBconnect = DriverManager.getConnection(DBurl, DBuser, DBpassword);
             DBconnect = DriverManager.getConnection(DBurl, DBuser, DBpassword);
-            statement = DBconnect.createStatement();
-            DBurl = ""; DBuser = ""; DBpassword = "";
+            jdbc:mysql://localhost:3306/db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+            //statement = DBconnect.createStatement();
+            //connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false");
+            //statement = connect.createStatement();
+
+               DBurl = ""; DBuser = ""; DBpassword = "";
+          //  connect = DriverManager.getConnection("jdbc:mysql://localhost/Ex1Person?user=root&password=fedefrede1");
         } catch (Exception e) {
             e.printStackTrace();
         }

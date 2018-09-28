@@ -30,7 +30,7 @@ public class Activity {
         this.ageLimit = ageLimit;
         this.pladser = pladser;
         this.sted = sted;
-        this.dateTime = dateTime;
+      //  this.dateTime = dateTime;
         this.antal = antal;
     }
 
@@ -77,10 +77,10 @@ public class Activity {
         this.sted = sted;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+     public LocalDateTime getDateTime() {
+         return dateTime;
 
+     }
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }

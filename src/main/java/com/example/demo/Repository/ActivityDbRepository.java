@@ -2,16 +2,13 @@ package com.example.demo.Repository;
 
 import com.example.demo.Model.Activity;
 import org.springframework.stereotype.Repository;
+
 import java.sql.SQLException;
-
-
 import java.sql.ResultSet;
 import java.util.Scanner;
-
 import java.time.LocalDateTime;
 
 import static com.example.demo.Control.AdventureXPController.DBconn;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +16,9 @@ import java.util.List;
 @Repository
 public class ActivityDbRepository implements ActivityInterface {
 
-
     private List<Activity> activityList;
 
-    public ActivityDbRepository(){
+    public ActivityDbRepository() {
         activityList = new ArrayList<>();
 
     }
@@ -33,10 +29,9 @@ public class ActivityDbRepository implements ActivityInterface {
     }
 
     @Override
-
     public boolean OpretAktivitet(Activity activity) throws SQLException {
-        String sqlString = "INSERT INTO Activity (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_DateTime, Activity_Number_of_participants) VALUES "+
-                "('"+activity.getNavn()+"', '"+activity.getAgeLimit()+"')";
+        String sqlString = "INSERT INTO Activity (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_DateTime, Activity_Number_of_participants) VALUES " +
+                "('" + activity.getNavn() + "', '" + activity.getAgeLimit() + "')";
         ResultSet resultset = DBconn.dbQuery(sqlString);
 
         if (resultset.rowInserted()) {
@@ -44,14 +39,12 @@ public class ActivityDbRepository implements ActivityInterface {
         } else {
             return false;
         }
-
     }
 
     @Override
     public void RedigerAktivitet(Activity activity) {
-        activityList.remove(activity.getId()-1);
+        activityList.remove(activity.getId() - 1);
         activityList.add(activity);
-
 
 
 //        jdbc.update("UPDATE AdventureDb.activities SET " +
