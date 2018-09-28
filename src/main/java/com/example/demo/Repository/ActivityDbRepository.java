@@ -1,6 +1,7 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Activity;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 import java.sql.SQLException;
 
@@ -33,18 +34,23 @@ public class ActivityDbRepository implements ActivityInterface {
     }
 
     @Override
+    public int getActivityListSize() { return activityList.size(); }
 
-    public boolean OpretAktivitet(Activity activity) throws SQLException {
-        String sqlString = "INSERT INTO Activity (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_DateTime, Activity_Number_of_participants) VALUES "+
-                "('"+activity.getNavn()+"', '"+activity.getAgeLimit()+"')";
-        ResultSet resultset = DBconn.dbQuery(sqlString);
+    @Override
+    public boolean OpretAktivitet(String name, int ageLimit, int slots, String location, LocalDateTime datestamp, int participants) throws SQLException {
+        name = DBconn.res(name);
+        location = DBconn.res(location);
+
+        String createActivitySql =  "INSERT INTO "+DBconn.DBprefix+"Activities (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_Location, Activity_DateTime, Activity_NumOfParticipants) " +
+                "VALUES ('"+name+"', '"+ageLimit+"', '"+slots+"', '"+location+"', '"+datestamp+"', '"+participants+"');";
+        ResultSet resultset = DBconn.dbQuery(createActivitySql);
 
         if (resultset.rowInserted()) {
+            this.activityList.add(new Activity(this.getActivityListSize()+1, name, ageLimit, slots, location, datestamp, participants));
             return true;
         } else {
             return false;
         }
-
     }
 
     @Override
