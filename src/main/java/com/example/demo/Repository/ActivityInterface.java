@@ -12,7 +12,7 @@ public interface ActivityInterface {
 
     int getActivityListSize();
 
-    boolean OpretAktivitet(String name, int agelimit, int slots, String location, LocalDateTime datestamp, int participants) throws SQLException;
+    void OpretAktivitet(String name, int agelimit, int slots, String location, int participants) throws SQLException;
 
 
     void RedigerAktivitet(Activity activity);
