@@ -3,6 +3,8 @@ package com.example.demo.Repository;
 import com.example.demo.Model.Activity;
 import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
+
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
@@ -55,9 +57,15 @@ public class ActivityDbRepository implements ActivityInterface {
 
         String datestamp = LocalDateTime.now().toString();
 
-        String createActivitySql =  "INSERT INTO "+DBconn.DBprefix+"Activities (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_Location, Activity_DateTime, Activity_NumOfParticipants) " +
-                "VALUES ('"+name+"', '"+ageLimit+"', '"+slots+"', '"+location+"', '"+datestamp+"', '"+participants+"');";
-        DBconn.dbUpdate(createActivitySql);
+        String insertSQL = "INSERT INTO "+DBconn.DBprefix+"Activities (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_Location, Activity_DateTime, Activity_NumOfParticipants) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement pStatement = DBconn.DBconnect.prepareStatement(insertSQL);
+        pStatement.setString(1, name);
+        pStatement.setInt(2, ageLimit);
+        pStatement.setInt(3, slots);
+        pStatement.setString(4, location);
+        pStatement.setString(5, datestamp);
+        pStatement.setInt(6, participants);
+        DBconn.statementUpdate(pStatement);
         this.activityList.add(new Activity(this.getActivityListSize()+1, name, ageLimit, slots, location, datestamp, participants));
     }
 

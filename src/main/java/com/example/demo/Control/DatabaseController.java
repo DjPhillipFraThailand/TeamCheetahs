@@ -3,7 +3,7 @@ package com.example.demo.Control;
 import java.sql.*;
 
 public class DatabaseController {
-    private static Connection DBconnect;
+    public static Connection DBconnect;
     private static Statement statement;
     private static ResultSet resultSet;
 
@@ -43,6 +43,14 @@ public class DatabaseController {
     public void dbUpdate(String SQLstring) {
         try {
             statement.executeUpdate(SQLstring);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void statementUpdate(PreparedStatement preparedStatement) {
+        try {
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
