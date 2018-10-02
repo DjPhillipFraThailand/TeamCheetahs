@@ -47,15 +47,26 @@ a {
     color: black;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
+table.list {
+    margin: 20px 0;
+    float: left;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    /*padding: 8px;*/
-    padding: 5px 8px 5px 8px;
+table.list thead th {
+    text-align: center;
+    font-size: 15px;
+    font-weight: normal;
+    color: #888;
+    padding-bottom: 10px;
+    border-bottom: 1px #bbb solid;
+}
+
+table.list tbody tr td {
+    padding: 10px 0;
+    text-align: center;
+}
+
+table.list tbody tr:nth-child(even) {
+    background-color: #eee;
 }
 /* https://coolors.co/abc66e-bed8d4-b4d2ba-8a897c-52dee5
