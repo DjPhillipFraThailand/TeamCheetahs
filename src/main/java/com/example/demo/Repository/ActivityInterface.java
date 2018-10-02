@@ -15,7 +15,7 @@ public interface ActivityInterface {
     void OpretAktivitet(String name, int agelimit, int slots, String location, int participants) throws SQLException;
 
 
-    void RedigerAktivitet(Activity activity);
+    void RedigerAktivitet(Activity activity) throws SQLException;
 
     Activity LæsAktivitet(int id);
 }

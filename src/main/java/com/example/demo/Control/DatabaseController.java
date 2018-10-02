@@ -8,14 +8,13 @@ public class DatabaseController {
     private static ResultSet resultSet;
 
 
-
     private static String DriverName = "com.mysql.cj.jdbc.Driver";
     private static String DBdatabase = "sorom_dk_db2";
     private static String DBuser = "sorom_dk";
     private static String DBpassword = "09D30DBD26415BE6E9559863D9D";
     private static String DBurl = "jdbc:mysql://mysql29.unoeuro.com/"+DBdatabase+"?user="+DBuser+"&password="+DBpassword+"&useSSL=false&serverTimezone=UTC";
     public static String DBprefix = "AdventureXP_";
-
+    
     // Database configuration start
     public DatabaseController() {
         try {
@@ -56,6 +55,15 @@ public class DatabaseController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ResultSet statementQuery(PreparedStatement preparedStatement) {
+        try {
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 
     // Returns the number of rows in a ResultSet
