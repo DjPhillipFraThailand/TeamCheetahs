@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -51,8 +52,9 @@ public class AdventureXPController {
                                @RequestParam("Activity_Location") String Location,
                                @RequestParam("Activity_DateTime") String DateTime,
                                @RequestParam("Acvitiy_NumOfParticipants") int Participants
-    ) throws SQLException {
-        ActivityRepository.OpretAktivitet(Name, AgeLimit, Slots, Location, Participants);
+    ) throws SQLException, ParseException {
+        Date datestamp = new SimpleDateFormat("dd/MM/yyyy").parse(DateTime);
+        ActivityRepository.OpretAktivitet(Name, AgeLimit, Slots, Location, datestamp, Participants);
 
         return "redirect:/";
     }

@@ -55,7 +55,7 @@ public class ActivityDbRepository implements ActivityInterface {
     public int getActivityListSize() { return activityList.size(); }
 
     @Override
-    public void OpretAktivitet(String name, int ageLimit, int slots, String location, int participants) throws SQLException {
+    public void OpretAktivitet(String name, int ageLimit, int slots, String location, Date date, int participants) throws SQLException {
         name = DBconn.res(name);
         location = DBconn.res(location);
 
