@@ -36,6 +36,7 @@ public class AdventureXPController {
         ActivityRepository.OpretAktivitet("lorem ipsum", ageLimit, slots, "big bowl hillerød", participants);
         System.out.println(ActivityRepository.getActivityListSize());
         System.out.println(ActivityRepository.LæsAktivitet(1));
+      
 
 
     }

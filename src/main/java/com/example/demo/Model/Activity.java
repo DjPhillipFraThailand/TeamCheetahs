@@ -16,7 +16,7 @@ public class Activity {
     public String toString() {
         return "Activity " +
                 "[id: " + id +
-                ", navn: '" + navn +
+                ", navn: " + navn +
                 ", ageLimit: " + ageLimit +
                 ", pladser: " + pladser +
                 ", sted: " + sted +
