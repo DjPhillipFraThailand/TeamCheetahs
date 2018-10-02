@@ -3,14 +3,16 @@ package com.example.demo.Repository;
 import java.sql.SQLException;
 import com.example.demo.Model.Activity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ActivityInterface {
 
     List<Activity> readAll();
 
+    int getActivityListSize();
 
-    boolean OpretAktivitet(Activity activity) throws SQLException;
+    void OpretAktivitet(String name, int agelimit, int slots, String location, int participants) throws SQLException;
 
 
     void RedigerAktivitet(Activity activity);

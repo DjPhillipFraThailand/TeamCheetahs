@@ -1,14 +1,17 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Activity;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
+
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
 import java.sql.ResultSet;
-import java.util.Scanner;
-
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Scanner;
 
 import static com.example.demo.Control.AdventureXPController.DBconn;
 
@@ -22,9 +25,21 @@ public class ActivityDbRepository implements ActivityInterface {
 
     private List<Activity> activityList;
 
-    public ActivityDbRepository(){
+    public ActivityDbRepository() throws SQLException {
         activityList = new ArrayList<>();
-
+        String ActivitySql = "SELECT * FROM "+DBconn.DBprefix+"Activities ORDER BY Activity_ID ASC";
+        ResultSet ActivityQuery = DBconn.dbQuery(ActivitySql);
+        while (ActivityQuery.next()) {
+            activityList.add(new Activity(
+                    ActivityQuery.getInt("Activity_ID"),
+                    ActivityQuery.getString("Activity_Name"),
+                    ActivityQuery.getInt("Activity_AgeLimit"),
+                    ActivityQuery.getInt("Activity_Slots"),
+                    ActivityQuery.getString("Activity_Location"),
+                    ActivityQuery.getString("Activity_DateTime"),
+                    ActivityQuery.getInt("Activity_NumOfParticipants")
+            ));
+        }
     }
 
     @Override
@@ -33,18 +48,25 @@ public class ActivityDbRepository implements ActivityInterface {
     }
 
     @Override
+    public int getActivityListSize() { return activityList.size(); }
 
-    public boolean OpretAktivitet(Activity activity) throws SQLException {
-        String sqlString = "INSERT INTO Activity (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_DateTime, Activity_Number_of_participants) VALUES "+
-                "('"+activity.getNavn()+"', '"+activity.getAgeLimit()+"')";
-        ResultSet resultset = DBconn.dbQuery(sqlString);
+    @Override
+    public void OpretAktivitet(String name, int ageLimit, int slots, String location, int participants) throws SQLException {
+        name = DBconn.res(name);
+        location = DBconn.res(location);
 
-        if (resultset.rowInserted()) {
-            return true;
-        } else {
-            return false;
-        }
+        String datestamp = LocalDateTime.now().toString();
 
+        String insertSQL = "INSERT INTO "+DBconn.DBprefix+"Activities (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_Location, Activity_DateTime, Activity_NumOfParticipants) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement pStatement = DBconn.DBconnect.prepareStatement(insertSQL);
+        pStatement.setString(1, name);
+        pStatement.setInt(2, ageLimit);
+        pStatement.setInt(3, slots);
+        pStatement.setString(4, location);
+        pStatement.setString(5, datestamp);
+        pStatement.setInt(6, participants);
+        DBconn.statementUpdate(pStatement);
+        this.activityList.add(new Activity(this.getActivityListSize()+1, name, ageLimit, slots, location, datestamp, participants));
     }
 
     @Override

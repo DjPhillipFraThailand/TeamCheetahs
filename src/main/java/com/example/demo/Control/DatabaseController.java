@@ -3,15 +3,18 @@ package com.example.demo.Control;
 import java.sql.*;
 
 public class DatabaseController {
-    private static Connection DBconnect;
+    public static Connection DBconnect;
     private static Statement statement;
     private static ResultSet resultSet;
 
-    private static String DriverName = "com.mysql.jdbc.Driver";
-    private static String DBurl = "jdbc:mysql://localhost:3306/teamcheetahs";
-    private static String DBuser = "root";
-    private static String DBpassword = "fader";
-    public static String DBprefix = "Protocol_";
+
+
+    private static String DriverName = "com.mysql.cj.jdbc.Driver";
+    private static String DBdatabase = "sorom_dk_db2";
+    private static String DBuser = "sorom_dk";
+    private static String DBpassword = "09D30DBD26415BE6E9559863D9D";
+    private static String DBurl = "jdbc:mysql://mysql29.unoeuro.com/"+DBdatabase+"?user="+DBuser+"&password="+DBpassword+"&useSSL=false&serverTimezone=UTC";
+    public static String DBprefix = "AdventureXP_";
 
     // Database configuration start
     public DatabaseController() {
@@ -42,6 +45,14 @@ public class DatabaseController {
     public void dbUpdate(String SQLstring) {
         try {
             statement.executeUpdate(SQLstring);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void statementUpdate(PreparedStatement preparedStatement) {
+        try {
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

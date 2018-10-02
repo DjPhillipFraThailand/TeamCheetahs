@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Activity {
     private int id;
@@ -8,7 +9,7 @@ public class Activity {
     private int ageLimit;
     private int pladser;
     private String sted;
-    private LocalDateTime dateTime;
+    private String dateTime;
     private int antal;
 
     @Override
@@ -24,7 +25,7 @@ public class Activity {
                 '}';
     }
 
-    public Activity(int id, String navn, int ageLimit, int pladser, String sted, LocalDateTime dateTime, int antal) {
+    public Activity(int id, String navn, int ageLimit, int pladser, String sted, String dateTime, int antal) {
         this.id = id;
         this.navn = navn;
         this.ageLimit = ageLimit;
@@ -77,11 +78,11 @@ public class Activity {
         this.sted = sted;
     }
 
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 
