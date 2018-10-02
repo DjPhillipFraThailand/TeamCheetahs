@@ -7,6 +7,8 @@ public class DatabaseController {
     private static Statement statement;
     private static ResultSet resultSet;
 
+
+
     private static String DriverName = "com.mysql.cj.jdbc.Driver";
     private static String DBdatabase = "sorom_dk_db2";
     private static String DBuser = "sorom_dk";
