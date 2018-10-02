@@ -37,5 +37,10 @@ public class AdventureXPController {
         System.out.println(ActivityRepository.getActivityListSize());
     }
 
+    @GetMapping("/")
+    public String index(Model model) {
+        return "index";
+    }
+
 
 }
