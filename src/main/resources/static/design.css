@@ -1,0 +1,49 @@
+body{
+    font-size: 12px;
+    color: black;
+    font-family: Verdana;
+
+}
+h1 {
+    font-size: 25px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.container {
+    width: 90%;
+    margin: auto;
+}
+.btn {
+    height: 45px;
+    width: 300px;
+    background-color: #3E92CC;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 32px;
+    margin-top: 30px;
+    font-size: 24px;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: 3px 5px #e0e0e0;
+}
+.btn:hover {
+    background-color: #8AA1B1;
+    color: #fff;
+    font-weight:bolder;
+}
+.containerbtn {
+    width: 20%;
+    margin:auto;
+}
+#centeractivites {
+    text-align: center;
+    margin-left: 3.5%;
+    margin-top: 50px;
+    margin-bottom:100px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+/* https://coolors.co/abc66e-bed8d4-b4d2ba-8a897c-52dee5

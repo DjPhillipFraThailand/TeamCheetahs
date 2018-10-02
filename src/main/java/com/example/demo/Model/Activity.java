@@ -9,23 +9,22 @@ public class Activity {
     private int ageLimit;
     private int pladser;
     private String sted;
-    private String dateTime;
+    private Date dateTime;
     private int antal;
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "id=" + id +
-                ", navn='" + navn + '\'' +
-                ", ageLimit=" + ageLimit +
-                ", pladser=" + pladser +
-                ", sted='" + sted + '\'' +
-                ", dateTime=" + dateTime +
-                ", antal=" + antal +
-                '}';
+        return "Activity " +
+                "[id: " + id +
+                ", navn: '" + navn +
+                ", ageLimit: " + ageLimit +
+                ", pladser: " + pladser +
+                ", sted: " + sted +
+                ", dateTime: " + dateTime +
+                ", antal: " + antal + "]";
     }
 
-    public Activity(int id, String navn, int ageLimit, int pladser, String sted, String dateTime, int antal) {
+    public Activity(int id, String navn, int ageLimit, int pladser, String sted, Date dateTime, int antal) {
         this.id = id;
         this.navn = navn;
         this.ageLimit = ageLimit;
@@ -78,11 +77,11 @@ public class Activity {
         this.sted = sted;
     }
 
-    public String getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 
