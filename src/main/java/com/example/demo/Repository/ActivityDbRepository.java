@@ -27,8 +27,11 @@ public class ActivityDbRepository implements ActivityInterface {
 
     public ActivityDbRepository() throws SQLException {
         activityList = new ArrayList<>();
-        String ActivitySql = "SELECT * FROM "+DBconn.DBprefix+"Activities ORDER BY Activity_ID ASC";
-        ResultSet ActivityQuery = DBconn.dbQuery(ActivitySql);
+
+        String selectSQL = "SELECT * FROM "+ DBconn.DBprefix+"Activities ORDER BY Activity_ID ASC";
+        PreparedStatement preparedStatement = DBconn.DBconnect.prepareStatement(selectSQL);
+        ResultSet ActivityQuery = DBconn.statementQuery(preparedStatement);
+
         while (ActivityQuery.next()) {
             activityList.add(new Activity(
                     ActivityQuery.getInt("Activity_ID"),
@@ -89,6 +92,8 @@ public class ActivityDbRepository implements ActivityInterface {
 
     @Override
     public Activity LæsAktivitet(int id) {
-        return null;
+
+        return activityList.get(id);
+
     }
 }
