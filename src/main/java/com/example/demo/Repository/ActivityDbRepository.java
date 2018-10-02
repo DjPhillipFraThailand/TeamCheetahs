@@ -36,9 +36,10 @@ public class ActivityDbRepository implements ActivityInterface {
                     ActivityQuery.getInt("Activity_AgeLimit"),
                     ActivityQuery.getInt("Activity_Slots"),
                     ActivityQuery.getString("Activity_Location"),
-                    ActivityQuery.getString("Activity_DateTime"),
+                    ActivityQuery.getDate("Activity_DateTime"),
                     ActivityQuery.getInt("Activity_NumOfParticipants")
             ));
+            System.out.println(ActivityQuery.getString("Activity_Name"));
         }
     }
 
@@ -55,7 +56,7 @@ public class ActivityDbRepository implements ActivityInterface {
         name = DBconn.res(name);
         location = DBconn.res(location);
 
-        String datestamp = LocalDateTime.now().toString();
+        Date datestamp = new java.sql.Date(new Date().getTime());
 
         String insertSQL = "INSERT INTO "+DBconn.DBprefix+"Activities (Activity_Name, Activity_AgeLimit, Activity_Slots, Activity_Location, Activity_DateTime, Activity_NumOfParticipants) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement pStatement = DBconn.DBconnect.prepareStatement(insertSQL);
@@ -63,7 +64,7 @@ public class ActivityDbRepository implements ActivityInterface {
         pStatement.setInt(2, ageLimit);
         pStatement.setInt(3, slots);
         pStatement.setString(4, location);
-        pStatement.setString(5, datestamp);
+        pStatement.setDate(5, (java.sql.Date) datestamp);
         pStatement.setInt(6, participants);
         DBconn.statementUpdate(pStatement);
         this.activityList.add(new Activity(this.getActivityListSize()+1, name, ageLimit, slots, location, datestamp, participants));
