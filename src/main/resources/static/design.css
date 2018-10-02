@@ -27,6 +27,26 @@ h1 {
     border: 1px solid black;
     box-shadow: 3px 5px #e0e0e0;
 }
+.edit {
+    height: 4px;
+    width: 6px;
+    background-color: #3E92CC;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid black;
+    box-shadow: 3px 5px #e0e0e0;
+}
+.delete {
+    height: 4px;
+    width: 6px;
+    background-color: red;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid black;
+    box-shadow: 3px 5px #e0e0e0;
+}
 .btn:hover {
     background-color: #8AA1B1;
     color: #fff;

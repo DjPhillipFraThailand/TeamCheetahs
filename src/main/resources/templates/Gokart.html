@@ -17,6 +17,8 @@
         <th>Lokation</th>
         <th>Dato</th>
         <th>Deltagere</th>
+        <th>Rediger</th>
+        <th>Slet</th>
 
     </tr>
     </thead>
@@ -29,11 +31,8 @@
         <td th:text="${Activity.sted}"/>
         <td th:text="${Activity.dateTime}"/>
         <td th:text="${Activity.antal}"/>
-
-
-
-
-
+        <td class="edit">Rediger</td>
+        <td class="delete">Slet</td>
 
     </tr>
     </tbody>
