@@ -71,21 +71,20 @@ public class ActivityDbRepository implements ActivityInterface {
     }
 
     @Override
-    public void RedigerAktivitet(Activity activity) {
+    public void RedigerAktivitet(Activity activity) throws SQLException {
         activityList.remove(activity.getId()-1);
         activityList.add(activity);
 
-
-
-//        DBconn.update("UPDATE teamcheetahs.activity SET " +
-//                "name ='" + activity.getNavn() + "' , " +
-//                "age_limit ='" + activity.getAgeLimit() + "' , " +
-//                "pladser ='" + activity.getPladser() + "' , " +
-//                "sted ='" + activity.getSted() + "' , " +
-//                "date_time ='" + activity.getDateTime() + "' , " +
-//                "antal ='" + activity.getAntal() + "' WHERE activities_id = '" + activity.getId() + "'");
-//
-
+        String updateActivitySQL = "UPDATE "+DBconn.DBprefix+" SET Activity_Name = ?, Activity_AgeLimit = ?, Activity_Slots = ?, Activity_Location = ?, Activity_DateTime = ?, Activity_NumOfParticipants = ? WHERE Activity_ID = ?";
+        PreparedStatement pStatement = DBconn.DBconnect.prepareStatement(updateActivitySQL);
+        pStatement.setString(1, activity.getNavn());
+        pStatement.setInt(2, activity.getAgeLimit());
+        pStatement.setInt(3, activity.getPladser());
+        pStatement.setString(4, activity.getSted());
+        pStatement.setDate(5, (java.sql.Date) activity.getDateTime());
+        pStatement.setInt(6, activity.getAntal());
+        pStatement.setInt(7, activity.getId());
+        DBconn.statementUpdate(pStatement);
     }
 
     @Override
