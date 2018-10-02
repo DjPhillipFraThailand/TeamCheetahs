@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret ny aktivitet</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <form action="/new_activity" method="post">
+        <strong>Opret ny aktivitet</strong><br>
+        <table>
+            <tr>
+                <td>Navn:</td>
+                <td>
+                    <input type="text" name="Activity_Name" />
+                </td>
+            </tr>
+            <tr>
+                <td>Aldersgrænse:</td>
+                <td>
+                    <input type="text" name="Activity_AgeLimit" />
+                </td>
+            </tr>
+            <tr>
+                <td>Antal deltagerpladser</td>
+                <td>
+                    <input type="text" name="Activity_Slots" />
+                </td>
+            </tr>
+            <tr>
+                <td>Lokation</td>
+                <td>
+                    <input type="text" name="Activity_Location" />
+                </td>
+            </tr>
+            <tr>
+                <td>Dato (YYYY-MM-DD)</td>
+                <td>
+                    <input type="date" name="Activity_DateTime" />
+                </td>
+            </tr>
+            <tr>
+                <td>Antal faktiske deltagere</td>
+                <td>
+                    <input type="text" name="Acvitiy_NumOfParticipants" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Opret aktivitet" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -27,20 +28,6 @@ public class AdventureXPController {
     public static ActivityInterface ActivityRepository;
     static { try { ActivityRepository = new ActivityDbRepository(); } catch (SQLException e) { e.printStackTrace(); } }
 
-    // NEDENSTÅENDE SLETTES SENERE
-    public static void test() throws SQLException {
-        // POSTMAPPING {}
-        int ageLimit = 18;
-        int slots = 10;
-        int participants = 9;
-        ActivityRepository.OpretAktivitet("lorem ipsum", ageLimit, slots, "big bowl hillerød", participants);
-        System.out.println(ActivityRepository.getActivityListSize());
-        System.out.println(ActivityRepository.LæsAktivitet(1));
-      
-
-
-    }
-
     @GetMapping("/")
     public String index(Model model) {
         return "index";
@@ -50,6 +37,24 @@ public class AdventureXPController {
     public String gokart(Model model){
         model.addAttribute("activityList", ActivityRepository.readAll());
         return "Gokart";
+    }
+
+    @GetMapping("/Create_Activity")
+    public String CreateActivity() {
+        return "Create_Activity";
+    }
+
+    @PostMapping("/new_activity")
+    public String New_Activity(@RequestParam("Activity_Name") String Name,
+                               @RequestParam("Activity_AgeLimit") int AgeLimit,
+                               @RequestParam("Activity_Slots") int Slots,
+                               @RequestParam("Activity_Location") String Location,
+                               @RequestParam("Activity_DateTime") String DateTime,
+                               @RequestParam("Acvitiy_NumOfParticipants") int Participants
+    ) throws SQLException {
+        ActivityRepository.OpretAktivitet(Name, AgeLimit, Slots, Location, Participants);
+
+        return "redirect:/";
     }
 
 }
