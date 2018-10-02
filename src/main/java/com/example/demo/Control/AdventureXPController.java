@@ -42,5 +42,10 @@ public class AdventureXPController {
         return "index";
     }
 
+    @GetMapping("/Gokart")
+    public String gokart(Model model){
+        model.addAttribute("activityList", ActivityRepository.readAll());
+        return "Gokart";
+    }
 
 }

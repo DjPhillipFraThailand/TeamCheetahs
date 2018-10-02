@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Gokart</title>
+    <title>Gokart oversigt</title>
+    <link rel="stylesheet" href="design.css">
 </head>
 <body>
 
-<p>Gokart</p>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Navn</th>
+        <th>Aldersgrænse</th>
+        <th>Antal pladser</th>
+        <th>Lokation</th>
+        <th>Dato</th>
+        <th>Deltagere</th>
 
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Activity: ${activityList}">
+        <td th:text="${Activity.id}"/>
+        <td th:text="${Activity.navn}"/>
+        <td th:text="${Activity.ageLimit}"/>
+        <td th:text="${Activity.pladser}"/>
+        <td th:text="${Activity.sted}"/>
+        <td th:text="${Activity.dateTime}"/>
+        <td th:text="${Activity.antal}"/>
+
+
+
+
+
+
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
