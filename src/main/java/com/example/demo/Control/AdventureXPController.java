@@ -35,6 +35,9 @@ public class AdventureXPController {
         int participants = 9;
         ActivityRepository.OpretAktivitet("lorem ipsum", ageLimit, slots, "big bowl hillerød", participants);
         System.out.println(ActivityRepository.getActivityListSize());
+        System.out.println(ActivityRepository.LæsAktivitet(1));
+
+
     }
 
     @GetMapping("/")

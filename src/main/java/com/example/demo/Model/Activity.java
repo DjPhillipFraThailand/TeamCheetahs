@@ -14,15 +14,14 @@ public class Activity {
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "id=" + id +
-                ", navn='" + navn + '\'' +
-                ", ageLimit=" + ageLimit +
-                ", pladser=" + pladser +
-                ", sted='" + sted + '\'' +
-                ", dateTime=" + dateTime +
-                ", antal=" + antal +
-                '}';
+        return "Activity " +
+                "[id: " + id +
+                ", navn: '" + navn +
+                ", ageLimit: " + ageLimit +
+                ", pladser: " + pladser +
+                ", sted: " + sted +
+                ", dateTime: " + dateTime +
+                ", antal: " + antal + "]";
     }
 
     public Activity(int id, String navn, int ageLimit, int pladser, String sted, Date dateTime, int antal) {
