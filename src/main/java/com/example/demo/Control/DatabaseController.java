@@ -58,6 +58,15 @@ public class DatabaseController {
         }
     }
 
+    public ResultSet statementQuery(PreparedStatement preparedStatement) {
+        try {
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
     // Returns the number of rows in a ResultSet
     public int resultCount(ResultSet set) throws SQLException {
         int rowCount;
