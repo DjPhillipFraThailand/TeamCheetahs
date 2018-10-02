@@ -8,9 +8,9 @@ public class DatabaseController {
     private static ResultSet resultSet;
 
     private static String DriverName = "com.mysql.jdbc.Driver";
-    private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs";
+    private static String DBurl = "jdbc:mysql://localhost:3306/teamcheetahs";
     private static String DBuser = "root";
-    private static String DBpassword = "abc123";
+    private static String DBpassword = "fader";
     public static String DBprefix = "Protocol_";
 
     // Database configuration start

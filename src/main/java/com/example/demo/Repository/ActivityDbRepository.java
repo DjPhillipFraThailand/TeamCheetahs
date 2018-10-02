@@ -54,14 +54,14 @@ public class ActivityDbRepository implements ActivityInterface {
 
 
 
-//        jdbc.update("UPDATE AdventureDb.activities SET " +
+//        DBconn.update("UPDATE teamcheetahs.activity SET " +
 //                "name ='" + activity.getNavn() + "' , " +
 //                "age_limit ='" + activity.getAgeLimit() + "' , " +
 //                "pladser ='" + activity.getPladser() + "' , " +
 //                "sted ='" + activity.getSted() + "' , " +
 //                "date_time ='" + activity.getDateTime() + "' , " +
 //                "antal ='" + activity.getAntal() + "' WHERE activities_id = '" + activity.getId() + "'");
-
+//
 
     }
 
