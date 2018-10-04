@@ -31,8 +31,20 @@
         <td th:text="${Activity.sted}"/>
         <td th:text="${Activity.dateTime}"/>
         <td th:text="${Activity.antal}"/>
-        <td class="edit">Rediger</td>
-        <td class="delete">Slet</td>
+
+        <div class="containerbtn">
+
+        <td class="edit">
+            <a th:href=" ${'redigerAktivitet?id=' + Activity.id}" class="btn">Rediger</a>
+        </td>
+
+        <td class="delete">
+        <a href="slet">
+            Slet
+        </a>
+        </td>
+
+        </div>
 
     </tr>
     </tbody>

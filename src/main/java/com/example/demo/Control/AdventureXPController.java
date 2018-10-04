@@ -36,8 +36,6 @@ public class AdventureXPController {
         ActivityRepository.OpretAktivitet("lorem ipsum", ageLimit, slots, "big bowl hillerød", participants);
         System.out.println(ActivityRepository.getActivityListSize());
         System.out.println(ActivityRepository.LæsAktivitet(1));
-      
-
 
     }
 
@@ -52,4 +50,15 @@ public class AdventureXPController {
         return "Gokart";
     }
 
+    @GetMapping("/redigerAktivitet")
+    public String redigerAktivitet (@RequestParam("id") int id, Model model) {
+        model.addAttribute("Activity", ActivityRepository.LæsAktivitet(id));
+        return "redigerAktivitet";
+    }
+
+    @PostMapping("/redigerAktivitet")
+    public String redigeraktivitet (@ModelAttribute Activity activity) throws SQLException {
+        ActivityRepository.RedigerAktivitet(activity);
+        return "redirect:/";
+    }
 }
