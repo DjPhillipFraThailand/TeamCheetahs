@@ -36,7 +36,7 @@ public class Activity {
         this.isReserved = isReserved;
     }
 
-    public Activity() {
+    public Activity(int i, String name, int ageLimit, int slots, String location, Date datestamp, int participants) {
     }
 
     public int getId() {
