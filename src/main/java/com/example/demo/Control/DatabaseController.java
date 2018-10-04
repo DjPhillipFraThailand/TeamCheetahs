@@ -6,12 +6,11 @@ public class DatabaseController {
     public static Connection DBconnect;
     private static Statement statement;
     private static ResultSet resultSet;
-
     private static String DriverName = "com.mysql.cj.jdbc.Driver";
     private static String DBdatabase = "sorom_dk_db2";
     private static String DBuser = "sorom_dk";
     private static String DBpassword = "09D30DBD26415BE6E9559863D9D";
-    private static String DBurl = "jdbc:mysql://mysql29.unoeuro.com/"+DBdatabase+"?user="+DBuser+"&password="+DBpassword+"&useSSL=false&serverTimezone=UTC";
+    private static String DBurl = "jdbc:mysql://mysql29.unoeuro.com/" + DBdatabase + "?user=" + DBuser + "&password=" + DBpassword + "&useSSL=false&serverTimezone=UTC";
     public static String DBprefix = "AdventureXP_";
 
     // Database configuration start
@@ -19,7 +18,9 @@ public class DatabaseController {
         try {
             Class.forName(DriverName).newInstance();
             DBconnect = DriverManager.getConnection(DBurl, DBuser, DBpassword);
-            DBurl = ""; DBuser = ""; DBpassword = "";
+            DBurl = "";
+            DBuser = "";
+            DBpassword = "";
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,7 +81,7 @@ public class DatabaseController {
     // Securing a string before using in sql string
     public String res(String content) {
         try {
-            content = content.replaceAll("\n","\\n")
+            content = content.replaceAll("\n", "\\n")
                     .replaceAll("\r", "\\r")
                     .replaceAll("\t", "\\t")
                     .replaceAll("\00", "\\0")
