@@ -27,6 +27,43 @@ h1 {
     border: 1px solid black;
     box-shadow: 3px 5px #e0e0e0;
 }
+
+.button {
+
+    height: 5px;
+    width: 15px;
+    background-color: #3E92CC;
+    vertical-align: middle;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 7px;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px #888888;
+
+
+    /*background-color: #4CAF50; !* Green *!*/
+    /*border: none;*/
+    /*color: white;*/
+    /*padding: 7px 10px;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*display: inline-block;*/
+    /*font-size: 7px;*/
+    /*border-radius: 5px; !* https://www.w3schools.com/css/css3_borders.asp *!*/
+    /*box-shadow: 1px 1px 1px #888888;*/
+    /*-webkit-transition-duration: 0.1s; !* Safari *!*/
+    /*transition-duration: 0.1s;*/
+}
+/* red */
+.button-del {
+    background-color: #f44336;
+}
+
+.button-edit {
+    background-color: dodgerblue;
+}
+
 .edit {
     height: 4px;
     width: 6px;
