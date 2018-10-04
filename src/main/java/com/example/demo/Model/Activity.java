@@ -32,6 +32,7 @@ public class Activity {
         this.sted = sted;
        // this.dateTime = dateTime;
         this.antal = antal;
+
     }
 
     public Activity() {
@@ -93,8 +94,5 @@ public class Activity {
         this.antal = antal;
     }
 
-    public void setReserved(boolean reserved){
-
-
     }
-}
+
