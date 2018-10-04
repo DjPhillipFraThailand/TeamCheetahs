@@ -27,6 +27,63 @@ h1 {
     border: 1px solid black;
     box-shadow: 3px 5px #e0e0e0;
 }
+
+.button {
+
+    height: 5px;
+    width: 15px;
+    background-color: #3E92CC;
+    vertical-align: middle;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 7px;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px #888888;
+
+
+    /*background-color: #4CAF50; !* Green *!*/
+    /*border: none;*/
+    /*color: white;*/
+    /*padding: 7px 10px;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*display: inline-block;*/
+    /*font-size: 7px;*/
+    /*border-radius: 5px; !* https://www.w3schools.com/css/css3_borders.asp *!*/
+    /*box-shadow: 1px 1px 1px #888888;*/
+    /*-webkit-transition-duration: 0.1s; !* Safari *!*/
+    /*transition-duration: 0.1s;*/
+}
+/* red */
+.button-del {
+    background-color: #f44336;
+}
+
+.button-edit {
+    background-color: dodgerblue;
+}
+
+.edit {
+    height: 4px;
+    width: 6px;
+    background-color: #3E92CC;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid black;
+    box-shadow: 3px 5px #e0e0e0;
+}
+.delete {
+    height: 4px;
+    width: 6px;
+    background-color: red;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid black;
+    box-shadow: 3px 5px #e0e0e0;
+}
 .btn:hover {
     background-color: #8AA1B1;
     color: #fff;
@@ -47,15 +104,26 @@ a {
     color: black;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
+table.list {
+    margin: 20px 0;
+    float: left;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    /*padding: 8px;*/
-    padding: 5px 8px 5px 8px;
+table.list thead th {
+    text-align: center;
+    font-size: 15px;
+    font-weight: normal;
+    color: #888;
+    padding-bottom: 10px;
+    border-bottom: 1px #bbb solid;
+}
+
+table.list tbody tr td {
+    padding: 10px 0;
+    text-align: center;
+}
+
+table.list tbody tr:nth-child(even) {
+    background-color: #eee;
 }
 /* https://coolors.co/abc66e-bed8d4-b4d2ba-8a897c-52dee5
