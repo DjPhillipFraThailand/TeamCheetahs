@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret ny aktivitet</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+<form action="/edit_activity" method="post">
+    <strong>Rediger en aktivitet</strong><br>
+    <table>
+        <tr>
+            <td>Navn:</td>
+            <td>
+                <input type="text" name="Activity_Name" th:value="${Activity.navn}" />
+            </td>
+        </tr>
+        <tr>
+            <td>Aldersgrænse:</td>
+            <td>
+                <input type="text" name="Activity_AgeLimit" th:value="${Activity.ageLimit}" />
+            </td>
+        </tr>
+        <tr>
+            <td>Antal deltager-pladser</td>
+            <td>
+                <input type="text" name="Activity_Slots" th:value="${Activity.pladser}" />
+            </td>
+        </tr>
+        <tr>
+            <td>Lokation</td>
+            <td>
+                <input type="text" name="Activity_Location" th:value="${Activity.sted}" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Gem ændringer" />
+                <input type="hidden" name="act_id" th:value="${Activity.id}" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
