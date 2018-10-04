@@ -25,6 +25,7 @@ public class ActivityDbRepository implements ActivityInterface {
 
     private List<Activity> activityList;
 
+
     public ActivityDbRepository() throws SQLException {
         activityList = new ArrayList<>();
 

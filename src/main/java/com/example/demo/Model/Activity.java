@@ -11,6 +11,7 @@ public class Activity {
     private String sted;
     private Date dateTime;
     private int antal;
+    private boolean isReserved;
 
     @Override
     public String toString() {
@@ -24,7 +25,7 @@ public class Activity {
                 ", antal: " + antal + "]";
     }
 
-    public Activity(int id, String navn, int ageLimit, int pladser, String sted, Date dateTime, int antal) {
+    public Activity(int id, String navn, int ageLimit, int pladser, String sted, Date dateTime, int antal, boolean isReserved) {
         this.id = id;
         this.navn = navn;
         this.ageLimit = ageLimit;
@@ -32,6 +33,7 @@ public class Activity {
         this.sted = sted;
         this.dateTime = dateTime;
         this.antal = antal;
+        this.isReserved = isReserved;
     }
 
     public Activity() {
@@ -91,5 +93,15 @@ public class Activity {
 
     public void setAntal(int antal) {
         this.antal = antal;
+    }
+
+    public boolean getIsReserved(){
+
+        return isReserved;
+    }
+
+    public void setReserved(boolean reserved){
+
+
     }
 }
