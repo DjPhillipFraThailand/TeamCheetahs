@@ -8,7 +8,7 @@ public class DatabaseController {
     private static Statement statement;
     private static ResultSet resultSet;
     private static String DriverName = "com.mysql.cj.jdbc.Driver";
-    private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false";
+    private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false"; // ser det som én query? "serverTimezone=UTC?useSSL=false"
     private static String DBuser = "root";
     private static String DBpassword = "fedefrede1";
     public static String DBprefix = "Protocol_";
