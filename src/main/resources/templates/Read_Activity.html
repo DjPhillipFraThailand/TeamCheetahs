@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Gokart oversigt</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+<a href="/">&laquo; Gå tilbage</a>
+<table width="100%" class="laro" cellspacing="0" cellpadding="0">
+    <thead>
+        <tr>
+            <th th:text="${Activity.id}"/>
+            <th th:text="${Activity.navn}"/>
+            <th th:text="${Activity.ageLimit}"/>
+            <th th:text="${Activity.pladser}"/>
+            <th th:text="${Activity.sted}"/>
+            <th class="edit">
+                <a th:href="${'/Edit_Activity?ActivityID=' + Activity.id}">Rediger</a>
+            </th>
+            <th class="delete">Slet</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ID</td>
+            <td>Navn</td>
+            <td>Aldersgrænse</td>
+            <td>Antal pladser</td>
+            <td>Lokation</td>
+            <td>Rediger</td>
+            <td>Slet</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- herunder skal der komme reservationer til den enkelte aktivitet -->
+</body>
+</html>

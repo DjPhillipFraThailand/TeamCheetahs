@@ -9,8 +9,6 @@ public class Activity {
     private int ageLimit;
     private int pladser;
     private String sted;
-    private Date dateTime;
-    private int antal;
     private boolean isReserved;
 
     @Override
@@ -20,19 +18,15 @@ public class Activity {
                 ", navn: " + navn +
                 ", ageLimit: " + ageLimit +
                 ", pladser: " + pladser +
-                ", sted: " + sted +
-                ", dateTime: " + dateTime +
-                ", antal: " + antal + "]";
+                ", sted: " + sted + "]";
     }
 
-    public Activity(int id, String navn, int ageLimit, int pladser, String sted, Date dateTime, int antal, boolean isReserved) {
+    public Activity(int id, String navn, int ageLimit, int pladser, String sted) {
         this.id = id;
         this.navn = navn;
         this.ageLimit = ageLimit;
         this.pladser = pladser;
         this.sted = sted;
-      //  this.dateTime = dateTime;
-        this.antal = antal;
         this.isReserved = isReserved;
     }
 
@@ -77,31 +71,5 @@ public class Activity {
 
     public void setSted(String sted) {
         this.sted = sted;
-    }
-
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public Date getDateTime() {
-        return dateTime;
-    }
-
-    public int getAntal() {
-        return antal;
-    }
-
-    public void setAntal(int antal) {
-        this.antal = antal;
-    }
-
-    public boolean getIsReserved(){
-
-        return isReserved;
-    }
-
-    public void setReserved(boolean reserved){
-
-
     }
 }

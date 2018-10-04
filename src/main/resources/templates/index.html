@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head><link rel="stylesheet" type="text/css" href="design.css">
 
     <meta charset="UTF-8">
@@ -10,20 +10,12 @@
 <div class="container">
     <h1 id="centeractivites">Adventure acitivies</h1>
     <div class="containerbtn">
-        <a href="Gokart">
+        <a href="Create_Activity">&raquo; Opret ny aktivitet</a>
+        <a th:each="Activity: ${activityList}" th:href="${'/Read_Activity?ActivityID=' + Activity.id}">
             <div class="btn">
-                <p>Gokart</p>
+                <p th:text="${Activity.navn}"></p>
             </div>
         </a>
-        <div class="btn">
-            <p>Paintball</p>
-        </div>
-        <div class="btn">
-            <p>Fodbold</p>
-        </div>
-        <div class="btn">
-            <p>Minigolf</p>
-        </div>
     </div>
 </div>
 

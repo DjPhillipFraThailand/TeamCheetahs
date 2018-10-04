@@ -104,9 +104,22 @@ a {
     color: black;
 }
 
-table.list {
+table {
     margin: 20px 0;
-    float: left;
+}
+
+table.laro thead th {
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+    color: #333;
+    padding-bottom: 2px;
+}
+
+table.laro tbody tr td {
+    text-align: center;
+    color: #888;
+    font-size: 15px;
 }
 
 table.list thead th {
