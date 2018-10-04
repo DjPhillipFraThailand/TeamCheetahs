@@ -35,7 +35,7 @@ public class Activity {
 
     }
 
-    public Activity(int i, String name, int ageLimit, int slots, String location, Date datestamp, int participants) {
+    public Activity() {
     }
 
     public int getId() {
