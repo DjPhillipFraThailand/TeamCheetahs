@@ -11,7 +11,8 @@ public class DemoApplication {
 
     public static void main(String[] args) throws SQLException {
         SpringApplication.run(DemoApplication.class, args);
-        AdventureXPController.test(); // SKAL SLETTES SENERE
     }
+
+
 
 }

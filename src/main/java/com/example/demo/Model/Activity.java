@@ -30,7 +30,7 @@ public class Activity {
         this.ageLimit = ageLimit;
         this.pladser = pladser;
         this.sted = sted;
-        this.dateTime = dateTime;
+       // this.dateTime = dateTime;
         this.antal = antal;
     }
 
@@ -77,12 +77,12 @@ public class Activity {
         this.sted = sted;
     }
 
-    public Date getDateTime() {
-        return dateTime;
-    }
-
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public Date getDateTime() {
+        return dateTime;
     }
 
     public int getAntal() {
@@ -91,5 +91,10 @@ public class Activity {
 
     public void setAntal(int antal) {
         this.antal = antal;
+    }
+
+    public void setReserved(boolean reserved){
+
+
     }
 }
