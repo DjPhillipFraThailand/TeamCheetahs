@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Activity {
     private int id;
@@ -8,23 +9,22 @@ public class Activity {
     private int ageLimit;
     private int pladser;
     private String sted;
-    private LocalDateTime dateTime;
+    private Date dateTime;
     private int antal;
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "id=" + id +
-                ", navn='" + navn + '\'' +
-                ", ageLimit=" + ageLimit +
-                ", pladser=" + pladser +
-                ", sted='" + sted + '\'' +
-                ", dateTime=" + dateTime +
-                ", antal=" + antal +
-                '}';
+        return "Activity " +
+                "[id: " + id +
+                ", navn: " + navn +
+                ", ageLimit: " + ageLimit +
+                ", pladser: " + pladser +
+                ", sted: " + sted +
+                ", dateTime: " + dateTime +
+                ", antal: " + antal + "]";
     }
 
-    public Activity(int id, String navn, int ageLimit, int pladser, String sted, LocalDateTime dateTime, int antal) {
+    public Activity(int id, String navn, int ageLimit, int pladser, String sted, Date dateTime, int antal) {
         this.id = id;
         this.navn = navn;
         this.ageLimit = ageLimit;
@@ -77,11 +77,19 @@ public class Activity {
         this.sted = sted;
     }
 
+<<<<<<< HEAD
      public LocalDateTime getDateTime() {
          return dateTime;
 
      }
     public void setDateTime(LocalDateTime dateTime) {
+=======
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+>>>>>>> 8fb649f07c9d2997c2f578a251ff148ce698a8ce
         this.dateTime = dateTime;
     }
 

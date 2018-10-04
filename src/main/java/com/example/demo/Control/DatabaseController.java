@@ -4,9 +4,10 @@ import java.sql.*;
 
 @SuppressWarnings("deprecation")
 public class DatabaseController {
-    private static Connection DBconnect;
+    public static Connection DBconnect;
     private static Statement statement;
     private static ResultSet resultSet;
+<<<<<<< HEAD
     private static String DriverName = "com.mysql.cj.jdbc.Driver";
     private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false"; // ser det som én query? "serverTimezone=UTC?useSSL=false"
     private static String DBuser = "root";
@@ -17,6 +18,15 @@ public class DatabaseController {
     //com.mysql.cj.jdbc.Driver
 //jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false
     //jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?
+
+
+    private static String DriverName = "com.mysql.cj.jdbc.Driver";
+    private static String DBdatabase = "sorom_dk_db2";
+    private static String DBuser = "sorom_dk";
+    private static String DBpassword = "09D30DBD26415BE6E9559863D9D";
+    private static String DBurl = "jdbc:mysql://mysql29.unoeuro.com/"+DBdatabase+"?user="+DBuser+"&password="+DBpassword+"&useSSL=false&serverTimezone=UTC";
+    public static String DBprefix = "AdventureXP_";
+
     // Database configuration start
     public DatabaseController() {
         try {
@@ -55,6 +65,23 @@ public class DatabaseController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void statementUpdate(PreparedStatement preparedStatement) {
+        try {
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ResultSet statementQuery(PreparedStatement preparedStatement) {
+        try {
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 
     // Returns the number of rows in a ResultSet
