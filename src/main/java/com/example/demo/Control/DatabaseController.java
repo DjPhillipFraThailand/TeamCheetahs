@@ -2,23 +2,10 @@ package com.example.demo.Control;
 
 import java.sql.*;
 
-@SuppressWarnings("deprecation")
 public class DatabaseController {
     public static Connection DBconnect;
     private static Statement statement;
     private static ResultSet resultSet;
-<<<<<<< HEAD
-    private static String DriverName = "com.mysql.cj.jdbc.Driver";
-    private static String DBurl = "jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false"; // ser det som én query? "serverTimezone=UTC?useSSL=false"
-    private static String DBuser = "root";
-    private static String DBpassword = "fedefrede1";
-    public static String DBprefix = "Protocol_";
-    private Connection connect = null;
-//com.mysql.jdbc.Driver
-    //com.mysql.cj.jdbc.Driver
-//jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false
-    //jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?
-
 
     private static String DriverName = "com.mysql.cj.jdbc.Driver";
     private static String DBdatabase = "sorom_dk_db2";
@@ -31,16 +18,8 @@ public class DatabaseController {
     public DatabaseController() {
         try {
             Class.forName(DriverName).newInstance();
-
-            //DBconnect = DriverManager.getConnection(DBurl, DBuser, DBpassword);
             DBconnect = DriverManager.getConnection(DBurl, DBuser, DBpassword);
-            jdbc:mysql://localhost:3306/db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-            //statement = DBconnect.createStatement();
-            //connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/TeamCheetahs?serverTimezone=UTC?useSSL=false");
-            //statement = connect.createStatement();
-
-               DBurl = ""; DBuser = ""; DBpassword = "";
-          //  connect = DriverManager.getConnection("jdbc:mysql://localhost/Ex1Person?user=root&password=fedefrede1");
+            DBurl = ""; DBuser = ""; DBpassword = "";
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -77,20 +77,12 @@ public class Activity {
         this.sted = sted;
     }
 
-<<<<<<< HEAD
-     public LocalDateTime getDateTime() {
-         return dateTime;
-
-     }
-    public void setDateTime(LocalDateTime dateTime) {
-=======
-    public Date getDateTime() {
-        return dateTime;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
->>>>>>> 8fb649f07c9d2997c2f578a251ff148ce698a8ce
-        this.dateTime = dateTime;
+    public Date getDateTime() {
+        return dateTime;
     }
 
     public int getAntal() {
