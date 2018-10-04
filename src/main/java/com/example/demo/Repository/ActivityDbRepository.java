@@ -31,7 +31,6 @@ public class ActivityDbRepository implements ActivityInterface {
                     ActivityQuery.getInt("Activity_Slots"),
                     ActivityQuery.getString("Activity_Location")
             ));
-            System.out.println(ActivityQuery.getString("Activity_Name"));
         }
     }
 
