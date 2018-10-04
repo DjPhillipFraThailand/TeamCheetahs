@@ -9,7 +9,6 @@ public class Activity {
     private int ageLimit;
     private int pladser;
     private String sted;
-    private boolean isReserved;
 
     @Override
     public String toString() {
@@ -27,7 +26,6 @@ public class Activity {
         this.ageLimit = ageLimit;
         this.pladser = pladser;
         this.sted = sted;
-        this.isReserved = isReserved;
     }
 
     public Activity() {
