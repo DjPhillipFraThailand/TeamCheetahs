@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.SQLPermission;
 import java.util.Date;
 import java.util.List;
 
@@ -19,13 +20,27 @@ public class ReservationDbRepository {
         reservationName = DBconn.res(reservationName);
 
         String insertSql = "INSERT INTO" + DBconn.DBprefix + "Reservation (Reservation_amount, Reservation_Date, Reservation_Name) VALUES (?,?,?)";
+
         PreparedStatement pStatement = DBconn.DBconnect.prepareStatement(insertSql);
         pStatement.setInt(1, reservationAmount);
         pStatement.setDate(2, (java.sql.Date) reservationDate);
         pStatement.setString(3,  reservationName);
         DBconn.statementUpdate(pStatement);
+        updateSlots(reservationAmount);
         this.reservationList.add(new Reservation(1, reservationName, reservationDate, reservationAmount));
+
     }
+
+    public void updateSlots(int reserveAmount) throws SQLException {
+        String updateAmount = "UPDATE" + DBconn.DBprefix + "Activities (Actitviy_Slots) VALUES (?)";
+        PreparedStatement preparedStatement = DBconn.DBconnect.prepareStatement(updateAmount);
+       preparedStatement.setInt(1,reserveAmount);
+       DBconn.statementUpdate(preparedStatement);
+
+
+    }
+
+
 
     public List<Reservation> getReservationList() {
         return reservationList;
