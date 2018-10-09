@@ -10,17 +10,21 @@ public class Reservation {
     private int reservationId;
     private String reservationName;
     private Date reservationDate;
+    private String reservationTimestamp;
     private int reservationAmount;
+    private int activityID;
 
 
     public Reservation(){
 
     }
 
-    public Reservation(int reservationId, String reservationName, Date reservationDate, int reservationAmount) {
+    public Reservation(int reservationId, int activityID, String reservationName, Date reservationDate, String reservationTimestamp, int reservationAmount) {
         this.reservationId = reservationId;
+        this.activityID = activityID;
         this.reservationName = reservationName;
         this.reservationDate = reservationDate;
+        this.reservationTimestamp = reservationTimestamp;
         this.reservationAmount = reservationAmount;
     }
 
@@ -30,6 +34,14 @@ public class Reservation {
 
     public void setReservationId(int reservationId) {
         this.reservationId = reservationId;
+    }
+
+    public int getActivityID() {
+        return activityID;
+    }
+
+    public void setActivityID(int activityID) {
+        this.activityID = activityID;
     }
 
     public String getReservationName() {
@@ -46,6 +58,14 @@ public class Reservation {
 
     public void setReservationDate(Date reservationDate) {
         this.reservationDate = reservationDate;
+    }
+
+    public String getReservationTimestamp() {
+        return reservationTimestamp;
+    }
+
+    public void setReservationTimestamp(String reservationTimestamp) {
+        this.reservationTimestamp = reservationTimestamp;
     }
 
     public int getReservationAmount() {

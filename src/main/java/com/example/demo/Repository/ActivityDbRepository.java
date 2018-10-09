@@ -63,7 +63,12 @@ public class ActivityDbRepository implements ActivityInterface {
     public void RedigerAktivitet(int ActivityID, String name, int AgeLimit, int Slots, String Location) throws SQLException {
         Activity temp = activityList.get(ActivityID-1);
 
-        String updateActivitySQL = "UPDATE " + DBconn.DBprefix + " SET Activity_Name = ?, Activity_AgeLimit = ?, Activity_Slots = ?, Activity_Location = ? WHERE Activity_ID = ?";
+        temp.setNavn(name);
+        temp.setAgeLimit(AgeLimit);
+        temp.setPladser(Slots);
+        temp.setSted(Location);
+
+        String updateActivitySQL = "UPDATE "+DBconn.DBprefix+"Activities SET Activity_Name = ?, Activity_AgeLimit = ?, Activity_Slots = ?, Activity_Location = ? WHERE Activity_ID = ?";
         PreparedStatement pStatement = DBconn.DBconnect.prepareStatement(updateActivitySQL);
         pStatement.setString(1, temp.getNavn());
         pStatement.setInt(2, temp.getAgeLimit());

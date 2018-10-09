@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static java.lang.Integer.parseInt;
 
 @Controller
 public class AdventureXPController {
@@ -17,6 +21,9 @@ public class AdventureXPController {
     public static DatabaseController DBconn = new DatabaseController();
     // Dependence injection
     // Design pattern: Strategy pattern
+    @Autowired
+    public static ReservationInterface ReservationRepository;
+    static { try { ReservationRepository = new ReservationDbRepository(); } catch (SQLException e) { e.printStackTrace(); } }
     @Autowired
     public static ActivityInterface ActivityRepository;
     static { try { ActivityRepository = new ActivityDbRepository(); } catch (SQLException e) { e.printStackTrace(); } }
@@ -30,6 +37,7 @@ public class AdventureXPController {
     @GetMapping("/Read_Activity")
     public String Read_Activity(@RequestParam("ActivityID") int ActivityID, Model model) {
         model.addAttribute("Activity", ActivityRepository.LæsAktivitet(ActivityID-1));
+        model.addAttribute("Reservations", ReservationRepository.getReservations(ActivityID));
         return "Read_Activity";
     }
 
@@ -42,6 +50,12 @@ public class AdventureXPController {
     @GetMapping("/Create_Activity")
     public String CreateActivity() {
         return "Create_Activity";
+    }
+
+    @GetMapping("/New_Reservation")
+    public String CreateReservation(@RequestParam("ActivityID") int ActivityID, Model model) {
+        model.addAttribute("ActivityID", ActivityID);
+        return "New_Reservation";
     }
 
     //Date datestamp = new SimpleDateFormat("yyyy-mm-dd").parse(DateTime);
@@ -57,6 +71,18 @@ public class AdventureXPController {
         return "redirect:/";
     }
 
+    @PostMapping("/new_reservation")
+    public String New_Reservation(@RequestParam("Reservation_Name") String Name,
+                                  @RequestParam("Reservation_Amount") int Amount,
+                                  @RequestParam("Reservation_Date") String Date,
+                                  @RequestParam("Reservation_Time") String Time,
+                                  @RequestParam("Activity_ID") String ActivityID
+    ) throws SQLException, ParseException {
+        Date Datestamp = new SimpleDateFormat("yyyy-mm-dd").parse(Date);
+        ReservationRepository.OpretReservation(Name, Datestamp, Time, Amount, parseInt(ActivityID));
+        return "redirect:/Read_Activity?ActivityID="+ActivityID;
+    }
+
    @PostMapping("/edit_activity")
    public String Edit_Activity(@RequestParam("act_id") int ActivityID,
                                 @RequestParam("Activity_Name") String name,
@@ -65,7 +91,7 @@ public class AdventureXPController {
                                @RequestParam("Activity_Location") String Location
    ) throws SQLException {
         ActivityRepository.RedigerAktivitet(ActivityID, name, AgeLimit, Slots, Location);
-       return "Read_Activity?ActivityID="+ActivityID;
+       return "redirect:/Read_Activity?ActivityID="+ActivityID;
    }
 
 }

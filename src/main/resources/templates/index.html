@@ -10,9 +10,8 @@
 <div class="container">
     <h1 id="centeractivites">Adventure acitivies</h1>
     <div class="containerbtn">
-        <a href="Create_Activity">&raquo; Opret ny aktivitet</a>
-        <br>
-        <a href="Reservation_Liste.html"> Reservér </a>
+        <a href="Create_Activity">&raquo; Opret ny aktivitet</a><br>
+
         <a th:each="Activity: ${activityList}" th:href="${'/Read_Activity?ActivityID=' + Activity.id}">
             <div class="btn">
                 <p th:text="${Activity.navn}"></p>

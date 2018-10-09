@@ -3,7 +3,6 @@ package com.example.demo.Repository;
 import java.sql.SQLException;
 import com.example.demo.Model.Activity;
 
-import java.util.Date;
 import java.util.List;
 
 public interface ActivityInterface {
@@ -18,5 +17,3 @@ public interface ActivityInterface {
 
     Activity LæsAktivitet(int id);
 }
-
-

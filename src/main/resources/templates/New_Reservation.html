@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret ny aktivitet</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+<form action="/new_reservation" method="post">
+    <strong>Lav ny reservation</strong><br>
+    <table>
+        <tr>
+            <td>Navn:</td>
+            <td>
+                <input type="text" name="Reservation_Name" />
+            </td>
+        </tr>
+        <tr>
+            <td>Antal gæster:</td>
+            <td>
+                <input type="text" name="Reservation_Amount" />
+            </td>
+        </tr>
+        <tr>
+            <td>Dato</td>
+            <td>
+                <input type="date" name="Reservation_Date" />
+            </td>
+        </tr>
+        <tr>
+            <td>Tidspunkt</td>
+            <td>
+                <input type="text" name="Reservation_Time" placeholder="HH:MM" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Lav reservation" />
+                <input type="hidden" name="Activity_ID" th:value="${ActivityID}"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -33,7 +33,24 @@
         </tr>
     </tbody>
 </table>
-
-<!-- herunder skal der komme reservationer til den enkelte aktivitet -->
+<h3>Aktivitetens Reserveringer</h3> <a th:href="${'/New_Reservation?ActivityID=' + Activity.id}">&raquo; Lav en ny reservation</a>
+<table width="100%" class="laro" cellspacing="0" cellpadding="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Navn</th>
+        <th>Antal gæster</th>
+        <th>Dato og tidspunkt</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Reservation: ${Reservations}">
+        <td th:text="${Reservation.reservationId}"/>
+        <td th:text="${Reservation.reservationName}"/>
+        <td th:text="${Reservation.reservationAmount}"/>
+        <td th:text="${Reservation.reservationDate + ' kl. ' + Reservation.reservationTimestamp}"/>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

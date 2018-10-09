@@ -4,45 +4,78 @@ import com.example.demo.Model.Reservation;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLPermission;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static com.example.demo.Control.AdventureXPController.DBconn;
 
 @Repository
-public class ReservationDbRepository {
+public class ReservationDbRepository implements ReservationInterface {
 
     private List<Reservation> reservationList;
 
-    public void OpretReservation(String reservationName, Date reservationDate, int reservationAmount) throws SQLException {
-        reservationName = DBconn.res(reservationName);
+    public ReservationDbRepository() throws SQLException {
+        reservationList = new ArrayList<>();
 
-        String insertSql = "INSERT INTO" + DBconn.DBprefix + "Reservation (Reservation_amount, Reservation_Date, Reservation_Name) VALUES (?,?,?)";
+        String selectSQL = "SELECT * FROM " + DBconn.DBprefix + "Reservation ORDER BY Reservation_ID ASC";
+        PreparedStatement preparedStatement = DBconn.DBconnect.prepareStatement(selectSQL);
+        ResultSet ReservationQuery = DBconn.statementQuery(preparedStatement);
+
+        while (ReservationQuery.next()) {
+            reservationList.add(new Reservation(
+                    ReservationQuery.getInt("Reservation_ID"),
+                    ReservationQuery.getInt("Activity_fkID"),
+                    ReservationQuery.getString("Reservation_Name"),
+                    ReservationQuery.getDate("Reservation_Date"),
+                    ReservationQuery.getString("Reservation_Timestamp"),
+                    ReservationQuery.getInt("Reservation_Amount")
+            ));
+        }
+    }
+
+    public int getReservationListSize() {
+        return reservationList.size();
+    }
+
+    public List<Reservation> getReservations(int ActivityID) {
+        List<Reservation> temp = new ArrayList<>();
+        for (Reservation R : reservationList) {
+            if (R.getActivityID() == ActivityID) {
+                temp.add(new Reservation(
+                        R.getReservationId(),
+                        R.getActivityID(),
+                        R.getReservationName(),
+                        R.getReservationDate(),
+                        R.getReservationTimestamp(),
+                        R.getReservationAmount()
+                ));
+            }
+        }
+        return temp;
+    }
+
+    public void OpretReservation(String reservationName, Date reservationDate, String reservationTimestamp, int reservationAmount, int ActivityID) throws SQLException {
+        reservationName = DBconn.res(reservationName);
+        reservationTimestamp = DBconn.res(reservationTimestamp);
+        java.sql.Date datestamp = new java.sql.Date(reservationDate.getTime());
+
+        String insertSql = "INSERT INTO "+DBconn.DBprefix+"Reservation (Reservation_Amount, Reservation_Date, Reservation_Timestamp, Reservation_Name, Activity_fkID) VALUES (?,?,?,?,?)";
 
         PreparedStatement pStatement = DBconn.DBconnect.prepareStatement(insertSql);
         pStatement.setInt(1, reservationAmount);
-        pStatement.setDate(2, (java.sql.Date) reservationDate);
-        pStatement.setString(3,  reservationName);
+        pStatement.setDate(2, datestamp);
+        pStatement.setString(3, reservationTimestamp);
+        pStatement.setString(4,  reservationName);
+        pStatement.setInt(5, ActivityID);
         DBconn.statementUpdate(pStatement);
-        updateSlots(reservationAmount);
-        this.reservationList.add(new Reservation(1, reservationName, reservationDate, reservationAmount));
-
+        this.reservationList.add(new Reservation(this.getReservationListSize() + 1, ActivityID, reservationName, reservationDate, reservationTimestamp, reservationAmount));
     }
 
-    public void updateSlots(int reserveAmount) throws SQLException {
-        String updateAmount = "UPDATE" + DBconn.DBprefix + "Activities (Actitviy_Slots) VALUES (?)";
-        PreparedStatement preparedStatement = DBconn.DBconnect.prepareStatement(updateAmount);
-       preparedStatement.setInt(1,reserveAmount);
-       DBconn.statementUpdate(preparedStatement);
-
-
-    }
-
-
-
-    public List<Reservation> getReservationList() {
+    public List<Reservation> getAll() {
         return reservationList;
     }
 }
