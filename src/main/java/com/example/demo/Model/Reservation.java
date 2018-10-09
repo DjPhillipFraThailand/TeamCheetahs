@@ -9,6 +9,7 @@ public class Reservation {
 
     private int reservationId;
     private String reservationName;
+    private String reservationPhone;
     private Date reservationDate;
     private String reservationTimestamp;
     private int reservationAmount;
@@ -19,10 +20,11 @@ public class Reservation {
 
     }
 
-    public Reservation(int reservationId, int activityID, String reservationName, Date reservationDate, String reservationTimestamp, int reservationAmount) {
+    public Reservation(int reservationId, int activityID, String reservationName, String reservationPhone, Date reservationDate, String reservationTimestamp, int reservationAmount) {
         this.reservationId = reservationId;
         this.activityID = activityID;
         this.reservationName = reservationName;
+        this.reservationPhone = reservationPhone;
         this.reservationDate = reservationDate;
         this.reservationTimestamp = reservationTimestamp;
         this.reservationAmount = reservationAmount;
@@ -50,6 +52,14 @@ public class Reservation {
 
     public void setReservationName(String reservationName) {
         this.reservationName = reservationName;
+    }
+
+    public String getReservationPhone() {
+        return reservationPhone;
+    }
+
+    public void setReservationPhone(String reservationPhone) {
+        this.reservationPhone = reservationPhone;
     }
 
     public Date getReservationDate() {

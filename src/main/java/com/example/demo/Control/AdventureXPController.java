@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -73,13 +74,14 @@ public class AdventureXPController {
 
     @PostMapping("/new_reservation")
     public String New_Reservation(@RequestParam("Reservation_Name") String Name,
+                                  @RequestParam("Reservation_Phone") String Phone,
                                   @RequestParam("Reservation_Amount") int Amount,
                                   @RequestParam("Reservation_Date") String Date,
                                   @RequestParam("Reservation_Time") String Time,
                                   @RequestParam("Activity_ID") String ActivityID
     ) throws SQLException, ParseException {
-        Date Datestamp = new SimpleDateFormat("yyyy-mm-dd").parse(Date);
-        ReservationRepository.OpretReservation(Name, Datestamp, Time, Amount, parseInt(ActivityID));
+        Date Datestamp = new SimpleDateFormat("yyyy-MM-dd").parse(Date);
+        ReservationRepository.OpretReservation(Name, Phone, Datestamp, Time, Amount, parseInt(ActivityID));
         return "redirect:/Read_Activity?ActivityID="+ActivityID;
     }
 

@@ -28,8 +28,8 @@
             <td>Aldersgrænse</td>
             <td>Antal pladser</td>
             <td>Lokation</td>
-            <td>Rediger</td>
-            <td>Slet</td>
+            <td></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -39,6 +39,7 @@
     <tr>
         <th>ID</th>
         <th>Navn</th>
+        <th>Telefon</th>
         <th>Antal gæster</th>
         <th>Dato og tidspunkt</th>
     </tr>
@@ -47,6 +48,7 @@
     <tr th:each="Reservation: ${Reservations}">
         <td th:text="${Reservation.reservationId}"/>
         <td th:text="${Reservation.reservationName}"/>
+        <td th:text="${Reservation.reservationPhone}"/>
         <td th:text="${Reservation.reservationAmount}"/>
         <td th:text="${Reservation.reservationDate + ' kl. ' + Reservation.reservationTimestamp}"/>
     </tr>
